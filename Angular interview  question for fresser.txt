@@ -1,0 +1,234 @@
+1.  How We Can Achieve Routing ?
+2.  How To Pass Data From One Component To Other ?
+3.  What Are The Angular Life Cycle Hooks.
+4.  What Is Dependency Injection(DI) ?
+5.  Lazy Loading?
+6.  What Is The Purpose Of Using Package.json In The Angular Project ?
+7.  What Is The Purpose Of Using angular.json In The Angular Project ?
+8.  What Is The Purpose Of ngIf, ngfor & ngSubmit Directive ?
+9.  What Is String Interpolation In Angular ?
+10.  Observables VS Promises ?
+11.  What Is The Use Of Rxjs In Angular8  ?
+12.  What is Express.js ?
+13.  What is Mongoose and its version ?
+14.  What is the purpose of Express.js with Node.js ?
+15.  import vs require
+16.  Why Schema ?
+17.  formGroup , formControls & FormBuilder
+18.  What is API in Angular?
+19.  What is the purpose of ngOnInit?
+20.  What are constructors in angular?
+21.  navigateByUrl   ?
+22.  What Is Prompt Box In JavaScript ?
+23.  Is it possible to  change port no in Angular Application ?
+24.  why we use Cors & body-Parser Module ?
+25.  What are new features in Angular 9?
+26.  How to upgrade Angular8 to 9 ?
+27.  What is subscribing ?
+28.  Dependency Injection ?
+
+=======================================================================================================================
+
+
+1.What is Angular and its features?
+Ans: Angular is typescript based open-source froent end platform, devloped by google. It helps the devloper 
+         to creat SPA on the client side.
+     It is based on MVC pattern and allow you to build well structure, easiley testable and maintaible front-end applications.
+       Features of Angular:The features of this framework
+      1.CrossPlatform
+      2.Speed & Performance
+      3.Declarative templates
+      4.dependency injection
+      4.end to end tooling
+
+2.Describe about MVC architecture.
+ M - model represents the data we are working with as well as business
+   - The Data format used by model in angulr is JSON.
+
+ V - It represent a tempalte that renders HTML
+   - It defines Application UI
+
+ C - It Handels the overall application flow.
+   - It handels the communication between model and view.
+   - Angular controller is '.ts ' file
+
+3.  What are new features in Angular 9?
+
+->new compiler IVY is the new default compiler(previous view engien)
+-support typeScript version 3.7
+-Allow better debuging application
+-AOT is enabled for devlopment mode also.(AOT is stand for ahead -of-timecompiler). 
+  It is used for pre-compiling the application components and along with there templated during binding process.
+
+4.  How to upgrade Angular8 to 9 ?
+- npm uninstall -g angular-cli 
+- npm cache verify
+- npm cache clean
+-npm install -g @angular/cli@latest
+
+5.  What is Express.js ?
+-Express is a module framework for Node that we can use for apllication.
+-Express module used to  devlop the REST API.
+
+6.  What is Mongoose and its version ?
+
+- Mongoose is an Object Data Modeling(ODM) library for MongoDB and Node.js. It manages relationships between data,
+  provides schema validation.
+-latest version of Mongoose is 5.9.12 
+
+7.  What is the purpose of Express.js with Node.js ?
+
+Express.js is a Node js web application server framework, which is specifically designed for building single-page, multi-page, and hybrid web applications.
+
+The MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications which has the following components;
+
+1) MongoDB - The standard NoSQL database
+
+2) Express.js - The default web applications framework
+
+3) Angular.js - The JavaScript MVC framework used for web applications
+
+4) Node.js - It is an opensoure,cross platform and javascript based servr side technology built in google 
+             chrome v8 compiler
+           - It is asynchronous and single-threead with non-blocking technique 
+
+7.  What Is The Purpose Of Using Package.json In The Angular Project ?
+   -> Package.json - It contents the metadata of package installed in your application. which includes,version,calture,repository details etc..
+
+8.  What Is The Purpose Of Using angular.json In The Angular Project ?
+   -> angular.json - It contents the metadata of application, which includes,version,calture,repository details etc..
+
+9.  What Is The Purpose Of ngIf, ngfor & ngSubmit Directive ?
+   -> ngFor - It is an iterator used performing iteration over a collection,(used binding complex data to view)
+   -> nfIf - It is used to Add or remove components from dom based given condition.
+   ->ngSubmit - a form group can submit its value dynamically by using the event "ngSubmit".
+
+10.  What Is String Interpolation In Angular ?
+   ->The values are binded to any attribute by using interpolation.it requires a binding expression{{}}
+
+10.  Observables VS Promises ?
+    Promises -> It handle single event
+    Observables -> it is a stream that allows passing of more than one event.
+
+11.  What Is The Use Of Rxjs In Angular8  ?
+   ->Rxjs is a library used client application for handling asynchronous request to any API.
+   ->It provides functionality which includes handling
+     1. STREAM 2.OBSERVER 3.OBSERVABLE 4.SUBSCRIBER 5.OBJECT
+
+12.  How We Can Achieve Routing ?
+ ->Routing is a technique used in a web application to creat and configure user and SEO friendly URL,We can sites
+    with links that direct you to a new page.
+  it can be achieved using routing.Here the pages that we are refering to will be in the form of components.
+
+13.  How To Pass Data From One Component To Other ?
+     
+      parent componet to child component -> @input
+      child componet to parent component - >@output
+
+14.  What Are The Angular Life Cycle Hooks.
+       -constructor
+       -ngOnchanges
+       -ngOninit
+       -ngDoCheck
+            -ngAfterContentInit
+            -ngAfterContentChecked
+            -ngAfterViewInit
+            -ngAfterViewChecked
+            -ngOnDestroy
+   
+15.  What Is Dependency Injection(DI) ?
+-> Dependency -> Is an object or service that can used in another object.
+              ->The Dependency tha we are injecting in a contructor is an opbject of the class that we want to use.
+-> Injection ->An injection is the process of passing the dependency to an dependent object.It creat a new instance of a class that we want to use.
+
+
+16.  Lazy Loading?
+ ->Lazy loading is one of the most useful concepts of Angular Routing. It help us to download the webpages in chunks instead of downloading everything in a big bundle.
+
+17.  import vs require
+  -> require - will automatically scan(node module) to find modules.
+  -> import - act same as require
+
+18.  Why Schema ?
+ ->It makes search results richer and super for the average searcher.
+
+19.  formGroup , formControls & FormBuilder
+  -> FormControl - A FormControl class is used to configure any form elememnt dynamically.It contents a set up property 
+                   that are used that are used to configure and manipulet a control.
+ -> FormGroup - A Form Group is collection of form controls which you can dynamically add into a component.
+
+ FormBuilder
+------------
+->A FormBuilder is responsible for configure the form elements dynamically.
+->It responsible for configuring the memory at the time of initializing the components  into memory by using 
+  a single tern pattern.
+
+
+20.  What is API in Angular?
+
+21.  What is the purpose of ngOnInit?
+  -> ngOnInit method which are executed on component load, The ngOnInit method called after
+     the constructor is executed.
+
+22.  What are constructors in angular?
+  -> constructors is not a part of angular, it is a part of TypeScript, It is used to creat a new instance in a class
+
+21.  navigateByUrl   ?
+
+22.  What Is Prompt Box In JavaScript ?
+  ->The prompt() method displays a dialog box that prompts the visitor for input.
+
+23.  Is it possible to  change port no in Angular Application ?
+   ->ng serve --host 0.0. 0.0 --port 5000
+
+24.  why we use Cors & body-Parser Module ?
+     -> cors ->This module used to enable the communication between different ports.
+     -> body-parser -> This module used to read the POST parameter  sent by client application.
+     -> sacket.io -> This module used to devlop the chat application.
+
+Observables and Subscribe
+-------------------------
+->When we send and recieve data over HTTP may take time, Observable is sbscribed by using asnyc pipe or by using sbuscribe method.
+->observable observe the request and response
+->It implicitly converts the data and emits so that any data object can consume the data.
+->Some methods of Observable map,mergeMap,switchMap,exhaustMap,debounceTime,of,retry,catch,throw etc
+Subscribe
+----------
+->subscribing is the process of tracking the request and response headers.
+-> It includes details like status,data ,config
+
+HttpClient
+------------
+->httpClient is performing HTTP request and response.
+->HttpClient is am improved replacement for HTTP.
+->You most import HttpClientModule after BrowserModule in your angular apps.
+->import fro @angulr/common/http
+->The HttpCLient class provided by HttpCLientModule contents the setup proerties and 
+  method that are used to handle various request from an API.
+or subscribe method is used by observable in order to handle the request headers .
+
+28. What is npm?
+ -> npm is a package manager for the javascript programming language, It is the default package manager for the
+    javascript runtime environment Node.js
+ -> The npm programming is installed on your computer when you installed Node.js
+ ->npm can install packages in local or global mode
+
+29. What is <router-outlet>
+ ->is a dynamic component that the router uses to displays views based on router navigations.
+
+30. promise vs Observables
+-> both promise and Observables provied us with abstractions that help us deal with the asynchronous nature of 
+   our application.
+   promise problms -> If you want to cancel,retry a request to the API.
+                   -> As your application get bigger , Promise become hard to manage.
+   Observables -> is an array or sequence of events over time ,
+               -> There are aslo powerful operators like retry(),or replay(), retryWhen(), delay()
+
+31. Constructor vs ngOnInit
+    Constructor  -> It creats an instances of the component class.
+                 -> It called first before ngOnInit()
+    ngOnInit -> ngOnInit function is one of an angular component life-cycle method.
+             ->Life cycle method in angular components allow you to run a piece of code at the different stages 
+               of the life of component.
+              ->ngOnInit method is called shortly after the component is created.
+

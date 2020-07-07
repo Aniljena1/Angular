@@ -1,0 +1,164 @@
+Routing
+-------
+->Routing is a technique used in web application to creat and configure user and SEO friendly urls.
+->SPA allows the user to acess everthing from one page the new details are update into page without reloading
+  complete page.
+->The librarey required for configuring routes in a angular application is "@angular/router"
+->The classes is required for configuring routes & maneging routes are 
+     a. Routes
+     b. RouterModule
+-> Router module configures and exports and routes into a router table
+-> Routes is a collection of route refference.
+
+How Angular Router Work
+-----------------------
+/ -> slashes divide URL segments
+() -> parentheses specify secondary routes
+: ->a colon specfies a named router outlet
+; ->a semicolon specfies a matrix parameter
+? ->a question mark separates the query string parameter
+# ->a hashtag specfies the fragment
+// ->a double slash separates multiple secondary routes
+
+        property                      Description
+   ------------------               --------------
+  path -> It verfies the requested path from URL.
+  component -> It refers to the component defined for specfied path.
+  redirectTo -> It handles the redirection to specfic component implicity.
+  pathmatch -> It can access a predefined path when request match.
+  children[] -> It is a collection of child routes
+->ng g c student
+->ng g c details
+->ng g c PageNotFpound(wild route)
+->ng g c Smark(childroute)
+ex:routing .ts
+--------------
+const routes:Routes=[
+{path:'',redirectTo:'student',pathMatch:'full'},
+{path:'student', component:'StudentComponenet',
+children:[{path:'smark',component:SmarkComponent}]
+},
+{path:'details',component:'DetailsComponent'},
+{path:'**',componenet:'PageNotFound'},
+  ]
+
+component.html
+--------------
+<a routerLink="home">student</a>
+<button (click)="smark()">mark</button>
+
+compont.ts
+----------
+ constructor(private router:Router){}
+  student(){  //serverside 
+    this.router.navigate(['/student'])
+  }
+
+forms
+-----
+->Form provides an UI,that allows the user to interact with the data  or application.
+->Angular forms are categories two types
+ ->Template driven form
+ ->reactive form /Model driven form
+ 
+->ngForm - It provides a set of property that are used to bind and handle fom control, It inclides form values and validation.
+->ngmodel - It provied a set of property that are used to bind and handle from elements like text,email,number,date,select etc.
+reactive form
+-------------
+->Model driven forms are more powerful and more flexible.
+->There are some things that we can't do with template driven form but with model driven form we can perform those things.
+   Like if we eant to detect if any changes occur in my variable we can do it with model driven form.
+->We can easily two-way databinding with model driven form.
+->The classes that are used to configure a form are 
+   1. Form Group
+   2.Form Control
+   3.Form Builder
+
+Form control
+------------
+->A form control class is used to configure any form elememt dynamically.
+->A form control is assigned in the UI for any elememt by using the property is 'formControl' which emplements 
+  'formControlname'
+  .ts   public name = new FormControl('value');
+  .html <input type='text' [FormControl]="name">
+
+
+
+FormGroup
+---------
+->Tracks the validity and tate of the group of formControl Instance or moreover, A Form group is collection of Form Controls.
+     public formname = new FormGroup({
+     formCantrol = new FormCsntrol(),
+     formCantrol = new FormCsntrol() 
+    )}
+-> A formGroup can submit its value dynamically by using the event 'ngSubmit'
+
+FormBuilder
+-----------
+->It help us to devlop the forms along with their initial value and their validation.
+->It responsible for configuring the memory at the time of initializing the components  into memory by using 
+  a single tern pattern.
+
+
+
+1. There are 2 kinds of redirect 
+local redirect:{path:'one',redirectTo:'two'}->when redirectTo starts with a slash.
+absolute redirect:{path:'one',redirectTo:'/two'}
+
+2.Guard -> user maybe user must login (authenticate) first.
+3.<router-outlet> ->tells the router where to dispaly views.
+Ex:
+<nav [ngClass]="menu">
+  <a routerLink="/home" routerLinkActive="active-link">Home</a> |
+  <a routerLink="/home" routerLinkActive="active-link">Home</a> 
+</nav>
+<router-outlet><router-outlet>
+
+
+                                       module loading
+                                   ======================
+->A module can loaded loaded eagerly,lazily and preloaded.
+Eager loading: In an eager loading scenario, all of the modules and functions are loaded on application start.
+               The root module is always eagerly loaded,and in some cases you we will use eager loading for additional feacture.
+
+Lazy loading -> Is loadimg modules on demand
+ex:{path:'company',loadChildren:'app/company/company.module#Companymodule'
+
+preloading -> Is loading modules in background just after application start.
+
+                                               RxJs
+                                           ---------
+->It is a library used in client apllicatin for handling asynchronous request from API.
+->To perform asynchronous programming we can use observable or promise.
+->It provides some functionality which includes handling
+1. STREAM
+2. OBSERVE
+3.OBSERVABLE
+4.SUBSCRIBE
+5.POBJECT
+
+Observables and Subscribe
+-------------------------
+->When we send and recieve data over HTTP may take time, Observable is sbscribed by using asnyc pipe or by using sbuscribe method.
+->observable observe the request and response
+->It implicitly converts the data and emits so that any data object can consume the data.
+->Some methods of Observable map,mergeMap,switchMap,exhaustMap,debounceTime,of,retry,catch,throw etc
+Subscribe
+----------
+->subscribing is the process of tracking the request and response headers.
+-> It includes details like status,data ,config
+
+HttpClient
+------------
+->httpClient is performing HTTP request and response.
+->HttpClient is am improved replacement for HTTP.
+->You most import HttpClientModule after BrowserModule in your angular apps.
+->import fro @angulr/common/http
+->The HttpCLient class provided by HttpCLientModule contents the setup proerties and 
+  method that are used to handle various request from an API.
+
+->get
+->post like etc.
+
+
+

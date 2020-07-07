@@ -1,0 +1,332 @@
+sahu soft(558012)
+=========
+module -> module is a mechanisem to group components,directives,pipes and services
+-------
+->ng g module company
+->ng g c company/employee
+
+declaration -> component
+imports -> module
+providers -> services 
+
+Decorators
+-----------> 
+-> The name of the decorator starts with @ symbol.
+-> Decorator are simply functions that return function,these function supply
+   metadata to angular about a perticular class, property, value or method
+ex-> 
+   1. @NgModule() - define modules
+   2. @Component() - to define component
+   3. @injectable() - to define services
+   4. @input and @output  - to define properties.
+   5. @HostListener - method  inside classes. ->alow us to handle event of the host element in directivr class.
+   6. @inject - for parameter inside class constructors.
+
+component
+---------
+1. component are basic building block of Angular, Which means that an Angular application 
+   is a collection of components, and one component is responsible for handling one view or part of view.
+
+Directives
+----------
+-> Directives are elements which change the apperance or behaviour of DOM element.
+   There are 3 types of Directive mainly
+   1. comopnent
+   2. structural -> ngIf,
+   3. Attribute  -> 
+
+
+Iterators
+---------
+ngIf - It adds or removes the HTML element in DOM layout. 
+     -> we need to do this prefix the directives name with an asterisk(*) and add it anywhere inside our templates.
+  ex-> <div *ngIf = "condition">...</div>
+
+app.comonent.html
+-----------------
+<h1>Hii Dear</h1>
+<h2>using ngIf</h2>
+<div>
+  Good Morning..{{title}}
+</div>
+<input type="radio" name="rad01" (click)="changevalue(true)">True
+<input type="radio" name="rad01" (click)="changevalue(False)">False
+<div *ngIf="isvalid">This is Valid data </div>
+<div *ngIf="!isvalid">This is not Valid data </div>
+<router-outlet></router-outlet>
+
+app.comonent.ts
+---------------
+export class AppComponent {
+  title = 'sahusoft';
+  isvalid:boolean = true ;
+  changevalue(valid){
+    this.isvalid = valid;
+  }
+}
+
+ngIf with else
+--------------
+-> else is used when we want to dispaly something for false condition.
+   <div *ngIf="condition";else elseBlock">..</div>
+   <ng-template #elseblock>..</ng-template> --> for else block we we need use <ng-template>
+
+app.comonent.html
+-----------------
+<h1>Hii Dear</h1>
+<h2>using ngIf</h2>
+<div>
+  Good Morning..{{title}}
+</div>
+<input type="radio" name="rad01" (click)="changevalue(true)">True
+<input type="radio" name="rad01" (click)="changevalue(False)">False
+<div *ngIf="isvalid ; else elseblock">This is Valid data </div>
+<ng-template #elseblock>
+  <div>
+    This is not valid data!
+  </div>
+</ng-template>
+
+ngSwitch
+--------
+-> ngSwitch is acctually comorised of two directives, an atribute directive an structual directive, It is similar to javascript language.
+->The ngSwitch directivelets you hide/show Html elements depending on an expression.
+->three types-> NgSwitch,ngSwitchCase,ngSwitchDefault
+
+app.comonent.html
+-----------------
+<h1>Hii Dear..{{title}}</h1>
+<h2>using ngSwitch</h2>
+<select (change)="setvalue($event)">
+  <option value="">...select...</option>
+  <option value="one">one</option>
+  <option value="two">two</option>
+  <option value="three">three</option>
+  <option value="four">four</option>
+  <option value="another">Default</option>
+</select>
+<div [ngSwitch]="choose">
+<h3 *ngSwitchCase="'one'">First</h3>
+<h3 *ngSwitchCase="'two'">Second</h3>
+<h3 *ngSwitchCase="'three'">Third</h3>
+<h3 *ngSwitchCase="'four'">Fourth</h3>
+<h3 *ngSwitchDefault>Default</h3>
+</div>
+<router-outlet></router-outlet>
+
+app.comonent.ts
+---------------
+export class AppComponent {
+  title = 'sahusoft';
+  public choose='';
+  setvalue(drp:any)
+  {
+    this.choose=drp.target.value;
+  }
+}
+ 
+*ngFor
+------
+->ngFor is a structural directive,means , it changes the structure of the DOM.
+-> <div *ngFor = "let <value> of <collection>">...</div>
+
+*ngFor - Local variables
+------------------------
+ *index - Used for provied the indexfor current elememt while iteration.
+ *First - Return true if current element is first element in the iteration ortherwise false.
+ *Last - Return true if current element is last element in the iteration ortherwise false.
+ *Even - Return true if current element is even element based on index in the iteration ortherwise false.
+ *Odd - Return true if current element is odd element based on index in the iteration ortherwise false.
+
+Ex:
+app.comonent.ts
+--------------- 
+export class AppComponent {
+  title = 'sahusoft';
+  students:any[]=[
+    {
+      'name':'rahul mohora'
+    },
+    {
+      'name':'birpal yadav'
+    },
+    {
+      'name':'sabanam hasrat'
+    }
+  ]
+}   
+
+app.comonent.html
+-----------------
+<h1>Hii Dear..{{title}}</h1>
+<h2>using ngFor</h2>
+<ul>
+  <li *ngFor="let student of students ;let i=index ;let f=first; let l=last">
+  {{i+1}} - {{student.name}} - {{f}} - {{l}}
+  </li>
+</ul>
+<router-outlet></router-outlet>
+
+two-way databinding
+--------------------
+->Angular supports twoway databinding and one way databinding.
+-> To handle two way databinding ng-model uses both property and event binding. [(ngModel)]="refference"
+ex-> without two way databinding bind two way data
+app.comonent.ts
+--------------- 
+ title = 'sahusoft';
+  data:string='anil';
+
+app.comonent.html
+-----------------
+<h1>Hii..{{title}}</h1>
+Enter Your Name :<input [value]='data' (input)='data=$event.target.value'>
+<br>
+your name:{{data}}
+ex-2
+-----
+app.comonent.ts
+--------------- 
+ title = 'sahusoft';
+ data:string='anil';
+
+app.mosule.ts
+-------------
+import { FormsModule } from '@angular/core';
+
+imports
+------
+FormsModule
+
+app.comonent.html
+-----------------
+<h1>Hii..{{title}}</h1>
+Enter Your Name :<input type="text" [(ngModel)="data">
+<br>
+your name:{{data}}
+
+Pipes
+=====
+-> The data for Angular application comes from any third party source, Which is not user friendly
+   format to dispaly client side.
+-> Some built-in pies are
+-------------------------
+   -> uppercase ->lowercase -> jsonpipe ->percentpipe ->datepipe ->numberpipe ->currencypipe
+custom pipe
+-----------
+   -> ng g p pipename
+
+Transform() decied the input data types.
+app.mosule.ts
+-------------
+  title = 'sahusoft';
+  empoyees:any[]=[
+    {code:'001',name:'asrit',gender:'male'},
+    {code:'002',name:'anil',gender:'male'},
+    {code:'003',name:'kanha',gender:'male'},
+    {code:'004',name:'ranu',gender:'female'},
+  ]
+pipe.ts
+--------
+  transform(value: string, gender:string): string {
+    if(gender.toLocaleLowerCase()=='male')
+    return "Mr."+value;
+    else
+    return "Miss."+value;
+  }
+
+app.comonent.html
+-----------------
+<h1>Hii..{{title}}</h1>
+<h3>Custom Pipe</h3>
+<table border="1">
+    <tr *ngFor="let employee of empoyees">
+        <td>{{employee.code}}</td>
+        <td>{{employee.name | gender:employee.gender}}</td>
+        <td>{{employee.gender}}</td>
+    </tr>
+</table>
+
+service
+-------
+->service are piece of code that are used to perform a specfic task,a service can contain a value or a function or combination of both.
+->services are injected into application using DI mechanisem.
+->services prevent us writting the same code at multiple sections of our application.
+->service is a mechanisem to share functionality b/w the components.
+service.ts
+------------
+  constructor() { }
+  display(){
+    return 'Hello sahusoft solution';
+  }
+component.ts
+------------
+  text:string;
+  constructor(private newservices:LoginService){}
+  ngOnInit(){
+    this.text =this.newservices.display();
+  }
+.html
+------
+<h1>Hii..{{title}}</h1>
+<h2>{{text}}</h2>
+
+
+Dipendency Injection
+=====================
+1.In s/w DI is technique whereby one object supplies the dependencies of another object.A dependencies 
+ is an object that can used as service.
+
+2.It is a coding pattern in which classes receive their dependencies from external sources rather than creating 
+  them it self.
+3.When module 'A' in an application needs module 'B' to run, then module B is a depency of module A.
+
+--
+Dependency -> Dependency is an object or service that can be used in any another object.
+           ->The Dependency that we are injecting in a constructor is an object of the class that we want to use.
+
+injection ->an Injection is process of passing the Dependency to a Dependent object. It ctreat a new instance of a class
+            along with its required Dependency.
+
+service.ts
+-----------
+export class LoginService {
+employee:any[];
+  constructor() { 
+    this.employee=[
+      {
+        empcode:'001',name:'kumar'
+      },
+      {
+        empcode:'002',name:'bikas'
+      },
+    ];
+  }
+
+}
+
+
+component.ts
+------------
+export class AppComponent {
+  title = 'sahusoft';
+  emp:any[];
+  constructor(private newservices:LoginService){}
+  ngOnInit(){
+    this.emp =this.newservices.employee;
+  }
+}
+
+.html
+-----
+<h2>DI</h2>
+<ul *ngFor="let em of emp">
+    <li>{{em.empcode}}</li>
+    <li>{{em.name}}</li>
+</ul>
+
+
+
+
+
+
